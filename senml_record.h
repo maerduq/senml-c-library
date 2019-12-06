@@ -54,6 +54,7 @@ class SenMLRecord: public SenMLBase
          */
         SenMLRecord(const char* name);
 
+        SenMLRecord(int index);
         /**
          * create a SenMLRecord object.
          * @param name the string that will be prepended to all records in this pack. 
@@ -202,6 +203,7 @@ class SenMLRecord: public SenMLBase
         double _time;
         int _updateTime;
         String _name;
+        int _index;
         SenMLUnit _unit;
 };
 

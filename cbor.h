@@ -33,6 +33,7 @@
 #define SENML_CBOR_T_LABEL   6
 #define SENML_CBOR_UT_LABEL  7
 #define SENML_CBOR_VD_LABEL  8
+#define THINGSML_CBOR_I_LABEL   23
 
 #define CBOR_TYPE_MASK          0xE0    /* top 3 bits */
 #define CBOR_INFO_MASK          0x1F    /* low 5 bits */

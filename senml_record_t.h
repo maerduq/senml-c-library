@@ -30,6 +30,7 @@ public:
     SenMLRecordTemplate(const char* name): SenMLRecord(name), _valAsSum(false){};
     SenMLRecordTemplate(const char* name, SenMLUnit unit):  SenMLRecord(name, unit), _valAsSum(false){};
     SenMLRecordTemplate(const char* name, SenMLUnit unit, T value):  SenMLRecord(name, unit), _value(value), _valAsSum(false) {};
+    SenMLRecordTemplate(int index, T value):  SenMLRecord(index), _value(value), _valAsSum(false) {};
    // ~SenMLRecordTemplate(){};
 
     /**
