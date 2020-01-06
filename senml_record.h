@@ -45,7 +45,7 @@ class SenMLRecord: public SenMLBase
         /**
          * create a SenMLRecord object.
          */
-        SenMLRecord(): _unit(SENML_UNIT_NONE), _time(NAN), _updateTime(0){};
+        SenMLRecord(): _index(THINGSML_NO_INDEX), _unit(SENML_UNIT_NONE), _time(NAN), _updateTime(0){};
 
         /**
          * create a SenMLRecord object.
@@ -54,7 +54,7 @@ class SenMLRecord: public SenMLBase
          */
         SenMLRecord(const char* name);
 
-        SenMLRecord(int index);
+        SenMLRecord(ThingsMLMeasurementIndex index);
         /**
          * create a SenMLRecord object.
          * @param name the string that will be prepended to all records in this pack. 
@@ -203,7 +203,7 @@ class SenMLRecord: public SenMLBase
         double _time;
         int _updateTime;
         String _name;
-        int _index;
+        ThingsMLMeasurementIndex _index;
         SenMLUnit _unit;
 };
 

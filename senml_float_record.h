@@ -27,6 +27,7 @@ public:
     SenMLFloatRecord(const char* name);
     SenMLFloatRecord(const char* name, SenMLUnit unit);
     SenMLFloatRecord(const char* name, SenMLUnit unit, float value):  SenMLRecordTemplate(name, unit, value){};
+    SenMLFloatRecord(ThingsMLMeasurementIndex index, float value):  SenMLRecordTemplate(index, value){};
     ~SenMLFloatRecord(){};
 
     /**

@@ -17,15 +17,15 @@
 #include <cbor.h>
 #include <senml_logging.h>
 
-SenMLRecord::SenMLRecord(const char* name): _name(name), _unit(SENML_UNIT_NONE), _time(NAN), _updateTime(0)
+SenMLRecord::SenMLRecord(const char* name): _index(THINGSML_NO_INDEX), _name(name), _unit(SENML_UNIT_NONE), _time(NAN), _updateTime(0)
 {
 }
 
-SenMLRecord::SenMLRecord(int index): _index(index), _unit(SENML_UNIT_NONE), _time(NAN), _updateTime(0)
+SenMLRecord::SenMLRecord(ThingsMLMeasurementIndex index): _index(index), _unit(SENML_UNIT_NONE), _time(NAN), _updateTime(0)
 {
 }
 
-SenMLRecord::SenMLRecord(const char* name, SenMLUnit unit): _name(name), _unit(unit), _time(NAN), _updateTime(0)
+SenMLRecord::SenMLRecord(const char* name, SenMLUnit unit): _index(THINGSML_NO_INDEX), _name(name), _unit(unit), _time(NAN), _updateTime(0)
 {
 }
 
@@ -103,8 +103,7 @@ void SenMLRecord::fieldsToJson()
         printText("\"n\":\"", 5);
         printText(this->_name.c_str(), bnLength);
         printText("\"", 1);
-    }
-    if(!isnan(this->_index)){
+    } else if(this->_index != THINGSML_NO_INDEX){
         printText("\"i_\":", 5);
         printDouble(this->_index, SENML_MAX_DOUBLE_PRECISION);
     }
@@ -147,7 +146,7 @@ int SenMLRecord::getFieldLength()
 {
     int result = 1;                                 //always have 1 item for the value
     if(this->_name.length() > 0) result++;
-    if(!isnan(this->_index)) result++;
+    if(this->_index != THINGSML_NO_INDEX) result++;
     if(!isnan(this->_time)) result++;
     if(this->_unit != SENML_UNIT_NONE) result++;
     if(this->_updateTime != 0) result ++;
@@ -160,8 +159,7 @@ int SenMLRecord::fieldsToCbor()
     if(this->_name.length() > 0){
         res += cbor_serialize_int(SENML_CBOR_N_LABEL);
         res += cbor_serialize_unicode_string(this->_name.c_str());
-    }
-    if(!isnan(this->_index)){
+    } else if(this->_index != THINGSML_NO_INDEX){
         res += cbor_serialize_int(THINGSML_CBOR_I_LABEL);
         res += cbor_serialize_int(this->_index);
     }

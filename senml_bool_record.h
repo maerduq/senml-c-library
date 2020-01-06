@@ -27,6 +27,7 @@ public:
     SenMLBoolRecord(const char* name);
     SenMLBoolRecord(const char* name, SenMLUnit unit);
     SenMLBoolRecord(const char* name, SenMLUnit unit, bool value):  SenMLRecordTemplate(name, unit, value){};
+    SenMLBoolRecord(ThingsMLMeasurementIndex index, bool value):  SenMLRecordTemplate(index, value){};
     ~SenMLBoolRecord(){};
 
     /**

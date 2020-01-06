@@ -27,6 +27,7 @@ public:
     SenMLStringRecord(const char* name):  SenMLRecordTemplate(name){};
     SenMLStringRecord(const char* name, SenMLUnit unit):  SenMLRecordTemplate(name, unit){};
     SenMLStringRecord(const char* name, SenMLUnit unit, const char* value):  SenMLRecordTemplate(name, unit, value){};
+    SenMLStringRecord(ThingsMLMeasurementIndex index, const char* value): SenMLRecordTemplate(index, value){};
     //~SenMLStringRecord(){};
 
     /**
